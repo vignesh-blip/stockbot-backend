@@ -13,6 +13,10 @@ Base.metadata.create_all(bind=engine)
 app.include_router(auth.router)
 app.include_router(watchlist.router)
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 @app.get("/")
 def root():
     return {"message": "✅ StockBot backend is running properly!"}
